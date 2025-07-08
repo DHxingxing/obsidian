@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_wiki=self.webpackChunkmy_wiki||[]).push([[1903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/obsidian/blog","blogTitle":"Blog","authorsListPath":"/obsidian/blog/authors"}')}}]);

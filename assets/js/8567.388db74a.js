@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_wiki=self.webpackChunkmy_wiki||[]).push([[8567],{8567:(e,c,i)=>{i.d(c,{createArchitectureServices:()=>k.S});var k=i(3333);i(9089)}}]);

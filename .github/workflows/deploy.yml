@@ -1,9 +1,9 @@
-name: Deploy Docusaurus to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # ⚠️ 如果你的主分支是 master，请改成 master
+      - main  # 如果你主分支是 master，请改成 master
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Docusaurus site
+      - name: Build website
         run: npm run build
 
       - name: Deploy to GitHub Pages

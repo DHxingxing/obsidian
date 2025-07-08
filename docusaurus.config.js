@@ -60,9 +60,7 @@ const config = {
     mermaid: true,
   },
 
-  mermaid: {
-    theme: { light: 'default', dark: 'dark' },
-  },
+
 
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -83,6 +81,9 @@ const config = {
               position: 'right',
             },
           ],
+        },
+        mermaid: {
+          theme: { light: 'default', dark: 'dark' },
         },
         footer: {
           style: 'dark',

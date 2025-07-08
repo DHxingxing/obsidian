@@ -14,7 +14,7 @@ const config = {
   url: 'https://DHxingxing.github.io',
   baseUrl: '/obsidian/',  // ← 结尾必须带 `/`
   organizationName: 'DHxingxing',
-  projectName: 'obsidian',  // 修改为 obsidian，与你的仓库名一致
+  projectName: 'DHxingxing.github.io',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -22,8 +22,8 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
-    defaultLocale: 'zh-Hans',  // 改回中文
-    locales: ['zh-Hans'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   presets: [
@@ -32,16 +32,17 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/DHxingxing/obsidian/edit/main/',  // 修改为你的仓库
+          editUrl:
+              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          blogSidebarCount: 5,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/DHxingxing/obsidian/edit/main/',  // 修改为你的仓库
+          editUrl:
+              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -53,19 +54,16 @@ const config = {
     ],
   ],
 
-  plugins: [
-    '@docusaurus/theme-mermaid',  // 添加回 mermaid 支持
-    '@docusaurus/theme-live-codeblock'
-  ],
+  plugins: ['@docusaurus/theme-live-codeblock'],
 
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
         image: 'img/docusaurus-social-card.jpg',
         navbar: {
-          title: '不百科',  // 使用你的网站标题
+          title: 'My Site',
           logo: {
-            alt: 'logo',
+            alt: 'My Site Logo',
             src: 'img/logo.svg',
           },
           items: [
@@ -73,11 +71,11 @@ const config = {
               type: 'docSidebar',
               sidebarId: 'tutorialSidebar',
               position: 'left',
-              label: '文档',  // 改为中文
+              label: 'Tutorial',
             },
-            {to: '/blog', label: '博客', position: 'left'},  // 改为中文
+            {to: '/blog', label: 'Blog', position: 'left'},
             {
-              href: 'https://github.com/DHxingxing/obsidian',  // 修改为你的仓库
+              href: 'https://github.com/facebook/docusaurus',
               label: 'GitHub',
               position: 'right',
             },
@@ -87,31 +85,35 @@ const config = {
           style: 'dark',
           links: [
             {
-              title: '文档',  // 改为中文
-              items: [{label: '快速开始', to: '/docs/intro'}],
+              title: 'Docs',
+              items: [{label: 'Tutorial', to: '/docs/intro'}],
             },
             {
-              title: '社区',  // 改为中文
+              title: 'Community',
               items: [
                 {
-                  label: 'Discord',
-                  href: 'https://discord.gg/docusaurus',
+                  label: 'Stack Overflow',
+                  href: 'https://stackoverflow.com/questions/tagged/docusaurus',
                 },
                 {
-                  label: 'Twitter',
-                  href: 'https://twitter.com/docusaurus',
+                  label: 'Discord',
+                  href: 'https://discordapp.com/invite/docusaurus',
+                },
+                {
+                  label: 'X',
+                  href: 'https://x.com/docusaurus',
                 },
               ],
             },
             {
-              title: '更多',  // 改为中文
+              title: 'More',
               items: [
-                {label: '博客', to: '/blog'},
-                {label: 'GitHub', href: 'https://github.com/DHxingxing/obsidian'},  // 修改为你的仓库
+                {label: 'Blog', to: '/blog'},
+                {label: 'GitHub', href: 'https://github.com/facebook/docusaurus'},
               ],
             },
           ],
-          copyright: `Copyright © ${new Date().getFullYear()} DHxingxing. Built with Docusaurus.`,  // 修改版权信息
+          copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
         },
         prism: {
           theme: prismThemes.github,
@@ -121,11 +123,6 @@ const config = {
           playgroundPosition: 'bottom', // 💡 这是你想要的 live playground 设置
         },
       }),
-
-  // 添加 mermaid 配置
-  mermaid: {
-    theme: { light: 'default', dark: 'dark' },
-  },
 };
 
 export default config;

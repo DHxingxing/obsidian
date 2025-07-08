@@ -14,7 +14,7 @@ const config = {
   url: 'https://DHxingxing.github.io',
   baseUrl: '/obsidian/',  // ← 结尾必须带 `/`
   organizationName: 'DHxingxing',
-  projectName: 'DHxingxing.github.io',
+  projectName: 'obsidian',  // 修改为 obsidian，与仓库名一致
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -22,8 +22,8 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',  // 改为中文
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -32,17 +32,16 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl:
-              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/DHxingxing/obsidian/edit/main/',
         },
         blog: {
           showReadingTime: true,
+          blogSidebarCount: 5,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl:
-              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/DHxingxing/obsidian/edit/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -54,16 +53,20 @@ const config = {
     ],
   ],
 
-  plugins: ['@docusaurus/theme-live-codeblock'],
+  // 插件配置 - live-codeblock 已经正确添加
+  plugins: [
+    '@docusaurus/theme-live-codeblock',
+    '@docusaurus/theme-mermaid',  // 如果需要 mermaid 图表支持
+  ],
 
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
         image: 'img/docusaurus-social-card.jpg',
         navbar: {
-          title: 'My Site',
+          title: '不百科',
           logo: {
-            alt: 'My Site Logo',
+            alt: 'logo',
             src: 'img/logo.svg',
           },
           items: [
@@ -71,11 +74,11 @@ const config = {
               type: 'docSidebar',
               sidebarId: 'tutorialSidebar',
               position: 'left',
-              label: 'Tutorial',
+              label: '文档',
             },
-            {to: '/blog', label: 'Blog', position: 'left'},
+            {to: '/blog', label: '博客', position: 'left'},
             {
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/DHxingxing/obsidian',
               label: 'GitHub',
               position: 'right',
             },
@@ -85,44 +88,48 @@ const config = {
           style: 'dark',
           links: [
             {
-              title: 'Docs',
-              items: [{label: 'Tutorial', to: '/docs/intro'}],
+              title: '文档',
+              items: [{label: '快速开始', to: '/docs/intro'}],
             },
             {
-              title: 'Community',
+              title: '社区',
               items: [
                 {
-                  label: 'Stack Overflow',
-                  href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                },
-                {
                   label: 'Discord',
-                  href: 'https://discordapp.com/invite/docusaurus',
+                  href: 'https://discord.gg/docusaurus',
                 },
                 {
-                  label: 'X',
-                  href: 'https://x.com/docusaurus',
+                  label: 'Twitter',
+                  href: 'https://twitter.com/docusaurus',
                 },
               ],
             },
             {
-              title: 'More',
+              title: '更多',
               items: [
-                {label: 'Blog', to: '/blog'},
-                {label: 'GitHub', href: 'https://github.com/facebook/docusaurus'},
+                {label: '博客', to: '/blog'},
+                {label: 'GitHub', href: 'https://github.com/DHxingxing/obsidian'},
               ],
             },
           ],
-          copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+          copyright: `Copyright © ${new Date().getFullYear()} DHxingxing. Built with Docusaurus.`,
         },
         prism: {
           theme: prismThemes.github,
           darkTheme: prismThemes.dracula,
+          // 如果需要支持更多语言，可以在这里添加
+          additionalLanguages: ['java', 'python', 'bash'],
         },
+        // live-codeblock 配置 - 这是关键配置
         liveCodeBlock: {
-          playgroundPosition: 'bottom', // 💡 这是你想要的 live playground 设置
+          playgroundPosition: 'bottom', // 或者 'top'
         },
       }),
+
+  // 如果使用 mermaid 插件，添加这个配置
+  mermaid: {
+    theme: { light: 'default', dark: 'dark' },
+  },
 };
 
 export default config;

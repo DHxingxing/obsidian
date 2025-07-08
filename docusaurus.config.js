@@ -12,9 +12,9 @@ const config = {
   },
 
   url: 'https://DHxingxing.github.io',
-  baseUrl: '/obsidian/',  // ← 结尾必须带 `/`
+  baseUrl: '/obsidian/',
   organizationName: 'DHxingxing',
-  projectName: 'obsidian',  // 修改为 obsidian，与仓库名一致
+  projectName: 'obsidian',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -22,21 +22,21 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
-    defaultLocale: 'zh-Hans',  // 改为中文
+    defaultLocale: 'zh-Hans',
     locales: ['zh-Hans'],
   },
 
   presets: [
     [
       'classic',
-      ({
+      {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/DHxingxing/obsidian/edit/main/',
         },
         blog: {
           showReadingTime: true,
-          blogSidebarCount: 5,
+          blogSidebarCount: 'ALL',
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -49,15 +49,20 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-      }),
+      },
     ],
   ],
 
-  // 插件配置 - live-codeblock 已经正确添加
-  plugins: [
-    '@docusaurus/theme-live-codeblock',
-    '@docusaurus/theme-mermaid',  // 如果需要 mermaid 图表支持
-  ],
+  themes: ['@docusaurus/theme-mermaid'],
+  plugins: ['@docusaurus/theme-live-codeblock'],
+
+  markdown: {
+    mermaid: true,
+  },
+
+  mermaid: {
+    theme: { light: 'default', dark: 'dark' },
+  },
 
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -70,13 +75,8 @@ const config = {
             src: 'img/logo.svg',
           },
           items: [
-            {
-              type: 'docSidebar',
-              sidebarId: 'tutorialSidebar',
-              position: 'left',
-              label: '文档',
-            },
-            {to: '/blog', label: '博客', position: 'left'},
+            { to: '/docs/intro', label: '文档', position: 'left' },
+            { to: '/blog', label: '博客', position: 'left' },
             {
               href: 'https://github.com/DHxingxing/obsidian',
               label: 'GitHub',
@@ -89,7 +89,7 @@ const config = {
           links: [
             {
               title: '文档',
-              items: [{label: '快速开始', to: '/docs/intro'}],
+              items: [{ label: '快速开始', to: '/docs/intro' }],
             },
             {
               title: '社区',
@@ -107,8 +107,8 @@ const config = {
             {
               title: '更多',
               items: [
-                {label: '博客', to: '/blog'},
-                {label: 'GitHub', href: 'https://github.com/DHxingxing/obsidian'},
+                { label: '博客', to: '/blog' },
+                { label: 'GitHub', href: 'https://github.com/DHxingxing/obsidian' },
               ],
             },
           ],
@@ -117,19 +117,12 @@ const config = {
         prism: {
           theme: prismThemes.github,
           darkTheme: prismThemes.dracula,
-          // 如果需要支持更多语言，可以在这里添加
           additionalLanguages: ['java', 'python', 'bash'],
         },
-        // live-codeblock 配置 - 这是关键配置
         liveCodeBlock: {
-          playgroundPosition: 'bottom', // 或者 'top'
+          playgroundPosition: 'bottom',
         },
       }),
-
-  // 如果使用 mermaid 插件，添加这个配置
-  mermaid: {
-    theme: { light: 'default', dark: 'dark' },
-  },
 };
 
 export default config;

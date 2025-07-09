@@ -1,0 +1,180 @@
+{
+  "main": {
+    "id": "8b945683d9d91ad0",
+    "type": "split",
+    "children": [
+      {
+        "id": "be32c2f5a57f3b60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c413df4c6709127c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "重写Ai模块代码到新标注工具系统"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "729772d18163ad48",
+    "type": "split",
+    "children": [
+      {
+        "id": "18b8bb9f112e9418",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "39a57631e3c021cc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "25af080abc20d1b4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "31d4d7aab91faa87",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "79bd517234676352",
+    "type": "split",
+    "children": [
+      {
+        "id": "f0f4157e5a0e1074",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "84be41c27f492bb8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "重写Ai模块代码到新标注工具系统 的反向链接列表"
+            }
+          },
+          {
+            "id": "b5ef47ab5bfdb48e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "重写Ai模块代码到新标注工具系统 的出链列表"
+            }
+          },
+          {
+            "id": "cac9293dfea29843",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "0e7d2ff7a7d6f051",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "重写Ai模块代码到新标注工具系统 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "c413df4c6709127c",
+  "lastOpenFiles": [
+    "Java/Spring/@JsonAnySetter-json反序列化的兜底机制.md",
+    "Java/Spring/@JsonAnySetter-json反序列化的兜底机制",
+    "Iflytek/工作计划7.7.md",
+    "Iflytek/工作计划.md",
+    "Iflytek/技术方案/异步资源导入架构设计说明.md",
+    "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md"
+  ]
+}

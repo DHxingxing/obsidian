@@ -54,6 +54,42 @@ flowchart TD
     F --> G[最终 ModelParams<br>含 extraParams]
 ```
 
+说明：为什么要自定义哥convertor呢？
+
+这是因为yml 转为pojo的流程是这样的:
+
+1. **YAML 文件解析**
+
+    * Spring Boot 启动时，使用 SnakeYAML 解析所有 YAML 文件（包括 application.yml 和自定义配置）。
+    * 这些 YAML 被转换成一个嵌套的 Map 结构。
+
+2. **属性扁平化**
+
+    * Spring Boot 把嵌套 Map 结构“扁平化”为键值对，比如：
+
+      ```
+      ai-models.deepseek-r1-v1.params.api-key=xxx
+      ai-models.deepseek-r1-v1.params.endpoint=yyy
+      ai-models.deepseek-r1-v1.params.appid=zzz
+      ```
+
+3. **Spring Binder 登场**
+
+    * **Binder** 负责把这些键值对，按照你在 `@ConfigurationProperties` 注解里定义的 POJO 结构注入到 Java Bean 中。
+    * 对于普通字段（如 `String`、`Integer` 等），Binder 直接注入。
+
+4. **类型转换**
+
+    * 当 Binder 遇到“目标类型”和“源数据类型”不匹配（比如需要将 Map 转成你的 ModelParams 类），就会查找有没有可用的 **Converter**。
+    * 没有合适的 Converter 时，只能绑定声明过的字段，多余字段丢弃或报错。
+    * **有自定义 Converter 时**，Binder 会把 Map 交给你的 Converter 处理，这时我们把映射不了的字段通过自定义的converter转为JackSon并通过 `@JsonAnySetter` 把未声明字段收集到 extraParams。
+
+5. **Bean 初始化完成**
+
+    * 绑定完成后，Spring Boot 会将完全注入的 Bean（如 ModelConfig）放进 IOC 容器，供全局使用。
+
+
+
 ### 4.1 关键代码位置
 
 | 环节                                              | 代码触发点              | 作用                                          |

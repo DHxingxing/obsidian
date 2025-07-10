@@ -45,13 +45,13 @@ YAML ─► SnakeYAML ─► Map<String,Object>
 ## 4 · 全链路拆解：五步到位
 
 ```mermaid
-flowchart TD
-    A[YAML 文件] --> B[SnakeYAML<br>解析成 Map]
-    B --> C[PropertySource<br>扁平键值对]
-    C --> D[Spring Binder<br>发现 Map→ModelParams]
-    D -->|调用| E[自定义 Converter]
-    E -->|convertValue(...)| F[Jackson<br>@JsonAnySetter]
-    F --> G[最终 ModelParams<br>含 extraParams]
+graph TD
+    A[YAML 文件] --> B[SnakeYAML 解析为 Map]
+    B --> C[属性扁平化为键值对]
+    C --> D[Spring Binder 识别配置结构]
+    D --> E[（如需）调用自定义 Converter]
+    E --> F[类型转换 ModelParams]
+    F --> G[注入到 POJO Bean]
 ```
 
 说明：为什么要自定义哥convertor呢？

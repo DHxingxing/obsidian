@@ -1,43 +1,42 @@
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
-import Heading from '@theme/Heading';
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
-    </Layout>
-  );
+    const {siteConfig} = useDocusaurusContext();
+
+    return (
+        <Layout
+            title={siteConfig.title}
+            description={siteConfig.tagline}
+        >
+            {/* 顶部横幅 */}
+            <div
+                style={{
+                    width: '100%',
+                    height: '320px',
+                    backgroundImage: `url(${useBaseUrl('src/static/img/wallhaven-xe5eel.png')})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            />
+
+            {/* 中心按钮 */}
+            <div style={{textAlign: 'center', marginTop: '2rem'}}>
+                <Link
+                    className="button button--primary button--lg"
+                    to="/docs/intro"
+                >
+                    Let's go
+                </Link>
+            </div>
+
+            {/* 介绍文字 */}
+            <div style={{textAlign:'center', marginTop:'2rem', fontStyle:'italic', fontSize:'1.5rem'}}>
+                “Talk is cheap. Show me the code.”
+            </div>
+        </Layout>
+    );
 }

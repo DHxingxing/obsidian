@@ -2,7 +2,7 @@
 JsonAnySetter 是 Jackson 提供的一种“兜底”机制。它的核心作用是：在把 JSON 反序列化成 Java 对象时，凡是 字段名在类里找不到对应属性 的那些键值对，Jackson 都会调用被 @JsonAnySetter 标注的方法，把它们保存到你指定的位置（通常是一张 Map）。这样就能让对象既保持已有的强类型字段，又能动态接收未知或私有的扩展字段，而不至于抛出 UnrecognizedPropertyException。
 
 
-只能在类里 指定一个 @JsonAnySetter 方法或字段。方法签名一般是 void put(String key, Object value)，字段通常是 Map'<String,Object>' extra（框架会直接往这张 Map 里塞数据）。
+只能在类里 指定一个 @JsonAnySetter 方法或字段。方法签名一般是 void put(String key, Object value)，字段通常是 Map (String,Object) extra（框架会直接往这张 Map 里塞数据）。
 
 如果同时需要把这部分动态字段序列化回 JSON，可以再给一个 @JsonAnyGetter 方法或字段，Jackson 在写出 JSON 时会把 Map 里的条目平铺为同级键值。
 

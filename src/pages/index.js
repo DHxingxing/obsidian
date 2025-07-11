@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import './index.module.css'
 
 export default function Home() {
     const {siteConfig} = useDocusaurusContext();
@@ -12,16 +12,7 @@ export default function Home() {
             title={siteConfig.title}
             description={siteConfig.tagline}
         >
-            {/* 顶部横幅 */}
-            <div
-                style={{
-                    width: '100%',
-                    height: '320px',
-                    backgroundImage: `url(${useBaseUrl('src/static/img/wallhaven-xe5eel.png')})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            />
+           <div className="homePage=bg"> </div>
 
             {/* 中心按钮 */}
             <div style={{textAlign: 'center', marginTop: '2rem'}}>

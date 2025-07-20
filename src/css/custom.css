@@ -1,107 +1,112 @@
 /*
  * custom.css
- *
- * 全局主题优化方案
- * 更新时间: 2025-07-20
+ * 全局主题最终优化版
  */
 
-/* 步骤一：引入更现代的字体 (从 Google Fonts 导入) */
+/* 1. 引入外部字体 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lexend:wght@400;600;700&display=swap');
 
-/* :root 定义了全局的 CSS 变量 */
+/* :root 定义了全局的、主要用于明亮模式的 CSS 变量 */
 :root {
-  /* 步骤二：定义一个全新的、优雅的配色方案 */
-  /* 我们选择一个蓝色系作为主色调 */
-  --ifm-color-primary: #3b82f6; /* 主色 */
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #bfdbfe;
+  /* --- 配色方案 --- */
+  --ifm-color-primary: #0066FF;
+  --ifm-color-primary-dark: #005ce6;
+  --ifm-color-primary-darker: #0052cc;
+  --ifm-color-primary-darkest: #0047b3;
+  --ifm-color-primary-light: #2e81ff;
+  --ifm-color-primary-lighter: #4791ff;
+  --ifm-color-primary-lightest: #66a3ff;
 
-  /* 步骤三：优化字体与排版 */
-  --ifm-font-family-base: 'Inter', sans-serif; /* 全局正文字体 */
-  --ifm-font-family-heading: 'Lexend', sans-serif; /* 全局标题字体 */
-  --ifm-font-size-base: 17px; /* 基础字号，16px 略小，17px 更易读 */
-  --ifm-line-height-base: 1.8; /* 增加行高，提升大段文字的可读性 */
-  --ifm-h1-font-size: 3rem;
-  --ifm-h2-font-size: 2rem;
-  --ifm-h3-font-size: 1.5rem;
-
-
-  /* 步骤四：柔化UI元素 (圆角与阴影) */
-  --ifm-border-radius: 8px; /* 全局圆角，让所有元素看起来更柔和 */
-  --ifm-global-shadow-lw: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; /* 轻量阴影 */
-  --ifm-global-shadow-md: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; /* 中等阴影 */
-  --ifm-global-shadow-lg: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; /* 大阴影 */
-
-  /* 步骤五：增强交互动效 */
-  --ifm-transition-fast: 200ms;
-  --ifm-transition-slow: 400ms;
-}
-
-/* 针对明亮模式的颜色微调 */
-[data-theme='light'] {
-  --ifm-background-color: #f9fafb; /* 使用非常浅的灰色背景，比纯白更柔和 */
-  --ifm-font-color-base: #111827; /* 深灰色文字，对比度柔和 */
+  --ifm-background-color: #f6f7f9;
   --ifm-card-background-color: #ffffff;
-  --ifm-link-color: var(--ifm-color-primary-dark);
+  --ifm-font-color-base: #333;
+
+  /* --- 字体与排版 --- */
+  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-font-family-heading: 'Lexend', sans-serif; /* 新增：为标题指定字体 */
+  --ifm-line-height-base: 1.8;
+
+  /* --- UI 元素 --- */
+  --ifm-border-radius: 8px;
+  --ifm-global-shadow-lw: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  --ifm-global-shadow-md: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 /* 针对暗黑模式的深度优化 */
 [data-theme='dark'] {
-  /* 使用深蓝灰色背景，代替纯黑，更显高级 */
-  --ifm-background-color: #111827;
-  --ifm-font-color-base: #e5e7eb; /* 柔和的白色文字 */
-  --ifm-card-background-color: #1f2937; /* 卡片使用深一点的灰色 */
+  /* 新增：暗黑模式下的主色调，使用更亮的蓝色保证对比度 */
+  --ifm-color-primary: #5294ff;
+  --ifm-color-primary-dark: #3381ff;
+  --ifm-color-primary-darker: #2477ff;
+  --ifm-color-primary-darkest: #005ff7;
+  --ifm-color-primary-light: #71a7ff;
+  --ifm-color-primary-lighter: #80b0ff;
+  --ifm-color-primary-lightest: #a0c6ff;
 
-  /* 在暗色模式下，主色调需要更亮一些以保证对比度 */
-  --ifm-color-primary: #60a5fa;
-  --ifm-color-primary-dark: #3b82f6;
-  --ifm-color-primary-darker: #2563eb;
-  --ifm-color-primary-darkest: #1d4ed8;
-  --ifm-color-primary-light: #93c5fd;
-  --ifm-color-primary-lighter: #bfdbfe;
-  --ifm-color-primary-lightest: #dbeafe;
-
-  --ifm-link-color: var(--ifm-color-primary-light);
-  --ifm-footer-background-color: #111827;
-
-  /* 暗色模式下的阴影需要用白色来模拟 */
-  --ifm-global-shadow-lw: rgba(255, 255, 255, 0.05) 0px 1px 2px 0px;
-  --ifm-global-shadow-md: rgba(255, 255, 255, 0.05) 0px 4px 6px -1px, rgba(255, 255, 255, 0.04) 0px 2px 4px -1px;
-  --ifm-global-shadow-lg: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.03) 0px 4px 6px -2px;
+  --ifm-background-color: #121212;
+  --ifm-card-background-color: #1e1e1e;
+  --ifm-font-color-base: #e0e0e0;
 }
 
-/* --- 全局元素微调 --- */
+/* --- 全局组件微调 --- */
 
-/* 为所有链接添加平滑的颜色过渡效果 */
-a {
-  transition: color var(--ifm-transition-fast) ease;
-}
-
-/* 导航栏使用更现代的模糊和阴影效果 */
+/* 导航栏毛玻璃效果 */
 .navbar {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  /* 在明暗模式下使用不同的背景色和透明度 */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-
 [data-theme='light'] .navbar {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(246, 247, 249, 0.7);
 }
-
 [data-theme='dark'] .navbar {
-  background-color: rgba(17, 24, 39, 0.8);
+  background-color: rgba(18, 18, 18, 0.7);
 }
 
-/* 让 Mermaid 图表也使用新的主题色 */
-[data-theme='light'] .mermaid  {
-  --mermaid-primary-color: var(--ifm-color-primary);
-  --mermaid-line-color: #333;
+/* --- 文章页样式 --- */
+
+/* 1. 美化文章主标题 H1 */
+.theme-doc-markdown h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-[data-theme='dark'] .mermaid {
-  --mermaid-primary-color: var(--ifm-color-primary);
-  --mermaid-line-color: #ddd;
+
+/* 2. 美化文章元数据 */
+.theme-doc-markdown header {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+/* 3. 美化代码块 */
+.prism-code-block {
+  border-radius: var(--ifm-border-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+  margin-bottom: 2rem !important;
+}
+
+/* 4. 美化引用块 Blockquote */
+.theme-doc-markdown blockquote {
+  background-color: var(--ifm-card-background-color);
+  border-left: 5px solid var(--ifm-color-primary);
+  padding: 0.5rem 1.5rem;
+  margin: 2rem 0;
+  box-shadow: var(--ifm-global-shadow-lw);
+}
+
+/* 5. 美化文章目录 TOC */
+.table-of-contents {
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+  padding-left: 1rem;
+}
+.table-of-contents a {
+  transition: all 0.2s ease;
+}
+.table-of-contents a.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  transform: translateX(4px);
+  background-color: transparent;
+  border-left: 2px solid var(--ifm-color-primary);
 }

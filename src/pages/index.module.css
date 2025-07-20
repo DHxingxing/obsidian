@@ -33,7 +33,7 @@
   height: 100vh; /* 100% 视口高度 */
 
   /* 关键：使用你的图片路径 */
-  background-image: url('/img/background.jpg');
+  background-image: url('/img/background.png');
 
   background-size: cover; /* 自动缩放图片以完全覆盖容器 */
   background-position: center; /* 图片居中显示 */

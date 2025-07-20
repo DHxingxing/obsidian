@@ -54,7 +54,17 @@ const config = {
   ],
 
   themes: ['@docusaurus/theme-mermaid'],
-  plugins: ['@docusaurus/theme-live-codeblock'],
+  plugins: [
+    '@docusaurus/theme-live-codeblock', // 您原有的插件保持不变
+
+    // 在下面添加新的本地搜索插件配置
+    [
+      require.resolve('docusaurus-plugin-search-local'),
+      {
+        // 插件的选项，在这里保持为空对象即可使用默认配置
+      },
+    ],
+  ],
 
   markdown: {
     mermaid: true,

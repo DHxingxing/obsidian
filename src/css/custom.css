@@ -1,31 +1,107 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+/*
+ * custom.css
+ *
+ * 全局主题优化方案
+ * 更新时间: 2025-07-20
  */
 
-/* You can override the default Infima variables here. */
+/* 步骤一：引入更现代的字体 (从 Google Fonts 导入) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lexend:wght@400;600;700&display=swap');
+
+/* :root 定义了全局的 CSS 变量 */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* 步骤二：定义一个全新的、优雅的配色方案 */
+  /* 我们选择一个蓝色系作为主色调 */
+  --ifm-color-primary: #3b82f6; /* 主色 */
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+
+  /* 步骤三：优化字体与排版 */
+  --ifm-font-family-base: 'Inter', sans-serif; /* 全局正文字体 */
+  --ifm-font-family-heading: 'Lexend', sans-serif; /* 全局标题字体 */
+  --ifm-font-size-base: 17px; /* 基础字号，16px 略小，17px 更易读 */
+  --ifm-line-height-base: 1.8; /* 增加行高，提升大段文字的可读性 */
+  --ifm-h1-font-size: 3rem;
+  --ifm-h2-font-size: 2rem;
+  --ifm-h3-font-size: 1.5rem;
+
+
+  /* 步骤四：柔化UI元素 (圆角与阴影) */
+  --ifm-border-radius: 8px; /* 全局圆角，让所有元素看起来更柔和 */
+  --ifm-global-shadow-lw: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; /* 轻量阴影 */
+  --ifm-global-shadow-md: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px; /* 中等阴影 */
+  --ifm-global-shadow-lg: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; /* 大阴影 */
+
+  /* 步骤五：增强交互动效 */
+  --ifm-transition-fast: 200ms;
+  --ifm-transition-slow: 400ms;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* 针对明亮模式的颜色微调 */
+[data-theme='light'] {
+  --ifm-background-color: #f9fafb; /* 使用非常浅的灰色背景，比纯白更柔和 */
+  --ifm-font-color-base: #111827; /* 深灰色文字，对比度柔和 */
+  --ifm-card-background-color: #ffffff;
+  --ifm-link-color: var(--ifm-color-primary-dark);
+}
+
+/* 针对暗黑模式的深度优化 */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* 使用深蓝灰色背景，代替纯黑，更显高级 */
+  --ifm-background-color: #111827;
+  --ifm-font-color-base: #e5e7eb; /* 柔和的白色文字 */
+  --ifm-card-background-color: #1f2937; /* 卡片使用深一点的灰色 */
+
+  /* 在暗色模式下，主色调需要更亮一些以保证对比度 */
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+
+  --ifm-link-color: var(--ifm-color-primary-light);
+  --ifm-footer-background-color: #111827;
+
+  /* 暗色模式下的阴影需要用白色来模拟 */
+  --ifm-global-shadow-lw: rgba(255, 255, 255, 0.05) 0px 1px 2px 0px;
+  --ifm-global-shadow-md: rgba(255, 255, 255, 0.05) 0px 4px 6px -1px, rgba(255, 255, 255, 0.04) 0px 2px 4px -1px;
+  --ifm-global-shadow-lg: rgba(255, 255, 255, 0.05) 0px 10px 15px -3px, rgba(255, 255, 255, 0.03) 0px 4px 6px -2px;
 }
 
+/* --- 全局元素微调 --- */
+
+/* 为所有链接添加平滑的颜色过渡效果 */
+a {
+  transition: color var(--ifm-transition-fast) ease;
+}
+
+/* 导航栏使用更现代的模糊和阴影效果 */
+.navbar {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* 在明暗模式下使用不同的背景色和透明度 */
+}
+
+[data-theme='light'] .navbar {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='dark'] .navbar {
+  background-color: rgba(17, 24, 39, 0.8);
+}
+
+/* 让 Mermaid 图表也使用新的主题色 */
+[data-theme='light'] .mermaid  {
+  --mermaid-primary-color: var(--ifm-color-primary);
+  --mermaid-line-color: #333;
+}
+[data-theme='dark'] .mermaid {
+  --mermaid-primary-color: var(--ifm-color-primary);
+  --mermaid-line-color: #ddd;
+}

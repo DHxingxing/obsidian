@@ -11,15 +11,14 @@
             "id": "a8913f64ed36cbb2",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "docs/Java/微服务（Feign、Sentinel、Nacos 等）/feigin在获取数据时候出现的范型擦除.md",
-                "bFile": "docs/Java/微服务（Feign、Sentinel、Nacos 等）/feigin在获取数据时候出现的范型擦除.md",
-                "aRef": "HEAD",
-                "bRef": ""
+                "file": "Iflytek/技术方案/再有人问你如何实现订单到期关闭，就把这篇文章发给他！.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: feigin在获取数据时候出现的范型擦除"
+              "icon": "lucide-file",
+              "title": "再有人问你如何实现订单到期关闭，就把这篇文章发给他！"
             }
           }
         ]
@@ -95,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Iflytek/技术方案/再有人问你如何实现订单到期关闭，就把这篇文章发给他！.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "再有人问你如何实现订单到期关闭，就把这篇文章发给他！ 的反向链接列表"
             }
           },
           {
@@ -166,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 569.5
+    "width": 311.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,27 +181,28 @@
   },
   "active": "a8913f64ed36cbb2",
   "lastOpenFiles": [
+    "Iflytek/技术方案/再有人问你如何实现订单到期关闭，就把这篇文章发给他！.md",
+    "源码/hutool工具下雪花算法. todo.md",
     "源码/Spring Feign 的源码.md",
-    "Java/K8s/常用命令K8s.md",
+    "源码/Redission 下的雪花算法.md",
+    "源码",
+    "Java/微服务（Feign、Sentinel、Nacos 等）/限流的方法与实现.md",
+    "Java/微服务（Feign、Sentinel、Nacos 等）/如何解决feigin在获取数据时候出现的范型擦除？.md",
     "Iflytek/检查bug提示词：.md",
+    "Iflytek/技术方案/雪花算法导致的前端精度丢失问题.md",
+    "Iflytek/技术方案/数据库动态sql拼接问题！todo.md",
     "Iflytek/技术方案/【最佳实践】Feign 泛型反序列化：告别 LinkedTreeMap 的终极解决方案.md",
+    "Java/K8s/常用命令K8s.md",
     "img_v3_02o8_f7adc37d-3ae9-43b3-8a70-1e56ec87d7nh.jpg",
     "img_v3_02o8_364e6193-4c47-4837-a510-e8b6085021nh.jpg",
     "img_v3_02o8_8490a130-6d18-48e9-bc4e-4b4153d470nh.jpg",
-    "Iflytek/技术方案/数据库动态sql拼接问题！todo.md",
-    "Java/微服务（Feign、Sentinel、Nacos 等）/如何解决feigin在获取数据时候出现的范型擦除？.md",
     "Java/微服务（Feign、Sentinel、Nacos 等）/feign - Stream 下重定向问题.md",
     "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
     "Iflytek/技术方案/异步资源导入架构设计说明.md",
     "Iflytek/技术方案/计算批次大小的证明.md",
     "Iflytek/技术方案/编写yml导致的参数增删如何影响实体类呢？.md",
     "daily/2025-07-01.md",
-    "源码/hutool工具下雪花算法. todo.md",
-    "源码/Redission 下的雪花算法.md",
-    "Iflytek/技术方案/雪花算法导致的前端精度丢失问题.md",
     "intro.md",
-    "源码",
-    "Java/微服务（Feign、Sentinel、Nacos 等）/限流的方法与实现.md",
     "Java/Spring/@JsonAnySetter-json反序列化的兜底机制.md",
     "Java/Spring/@JsonAnySetter-json反序列化的兜底机制",
     "Iflytek/工作计划7.7.md",

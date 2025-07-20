@@ -24,47 +24,96 @@
 
 /* src/pages/index.module.css */
 
-/* 背景图样式 */
+/* 背景图样式 (保持不变) */
 .homePageBg {
-  position: fixed; /* 固定位置，不随页面滚动而动 */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* 100% 视口宽度 */
-  height: 100vh; /* 100% 视口高度 */
-
-  /* 关键：使用你的图片路径 */
-  background-image: url('/img/background.png');
-
-  background-size: cover; /* 自动缩放图片以完全覆盖容器 */
-  background-position: center; /* 图片居中显示 */
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/img/background.jpg');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-
-  z-index: -1; /* 将背景置于最底层，以免遮挡内容 */
+  z-index: -1;
+  /* 可以给背景图加一个滤镜，比如变暗一点，让文字更突出 */
+  filter: brightness(0.7);
 }
 
-/* 页面内容容器样式 */
-.homePageContent {
-  /* 使用 Flexbox 实现垂直居中 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  /* 计算容器高度，使其撑满屏幕（减去顶部导航栏的高度）*/
-  min-height: calc(100vh - var(--ifm-navbar-height));
-
-  /* 确保内容在背景图之上 */
-  position: relative;
-  z-index: 1;
-}
-
-/* 介绍文字样式 */
-.quote {
+/* 新增：英雄区域 (Hero Banner) 的样式 */
+.heroBanner {
+  padding: 4rem 0;
   text-align: center;
-  font-style: italic;
-  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  color: white; /* 让所有文字默认为白色 */
+  /* 撑满屏幕（减去导航栏高度），并使用 Flexbox 居中 */
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* 设置一个醒目的颜色，比如白色，并添加一点阴影以增加可读性 */
+/* Docusaurus 默认的 hero__title 和 hero__subtitle 样式可能需要调整颜色 */
+:global(.hero__title), :global(.hero__subtitle) {
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+:global(.hero__title) {
+  font-size: 4rem;
+}
+
+:global(.hero__subtitle) {
+  font-size: 1.5rem;
+}
+
+
+/* 按钮容器样式 */
+.buttons {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 为 Docusaurus 按钮添加交互动画 */
+:global(.button) {
+  transition: all 0.3s ease;
+}
+:global(.button:hover) {
+  transform: translateY(-3px); /* 鼠标悬停时轻微上移 */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 引言文字样式 */
+.quote {
+  font-style: italic;
+  font-size: 1.25rem;
+  opacity: 0.8; /* 让它稍微不那么突出 */
+}
+
+/* --- 动画效果 --- */
+
+/* 定义一个从下向上渐入的动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 应用动画的类 */
+.fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 延迟动画，让引言在标题之后出现 */
+.delayFadeIn {
+  opacity: 0; /* 初始状态透明 */
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.5s; /* 延迟 0.5 秒开始动画 */
 }

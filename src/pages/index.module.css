@@ -22,16 +22,49 @@
   justify-content: center;
 }
 
-.homePage-bg{
-  background-image: url(/img/wallhaven-xe5eel.png);
-  background-size: cover;
-  background-position: center;
+/* src/pages/index.module.css */
+
+/* 背景图样式 */
+.homePageBg {
+  position: fixed; /* 固定位置，不随页面滚动而动 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% 视口宽度 */
+  height: 100vh; /* 100% 视口高度 */
+
+  /* 关键：使用你的图片路径 */
+  background-image: url('/img/background.jpg');
+
+  background-size: cover; /* 自动缩放图片以完全覆盖容器 */
+  background-position: center; /* 图片居中显示 */
   background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
+
+  z-index: -1; /* 将背景置于最底层，以免遮挡内容 */
+}
+
+/* 页面内容容器样式 */
+.homePageContent {
+  /* 使用 Flexbox 实现垂直居中 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* 计算容器高度，使其撑满屏幕（减去顶部导航栏的高度）*/
+  min-height: calc(100vh - var(--ifm-navbar-height));
+
+  /* 确保内容在背景图之上 */
+  position: relative;
+  z-index: 1;
+}
+
+/* 介绍文字样式 */
+.quote {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.5rem;
+
+  /* 设置一个醒目的颜色，比如白色，并添加一点阴影以增加可读性 */
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }

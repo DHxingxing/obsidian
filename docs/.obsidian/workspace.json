@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/算法/接雨水.md",
+                "file": "Java/Spring/@ConfigurationProperties与@Value的区别.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "接雨水"
+              "title": "@ConfigurationProperties与@Value的区别"
             }
           }
         ]
@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "byModifiedTime",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Java/算法/接雨水.md",
+                "file": "Java/Spring/@ConfigurationProperties与@Value的区别.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "接雨水 的反向链接列表"
+              "title": "@ConfigurationProperties与@Value的区别 的反向链接列表"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
+                "file": "Java/Spring/@ConfigurationProperties与@Value的区别.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "重写Ai模块代码到新标注工具系统 的大纲"
+              "title": "@ConfigurationProperties与@Value的区别 的大纲"
             }
           },
           {
@@ -179,9 +179,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a8913f64ed36cbb2",
+  "active": "0e7d2ff7a7d6f051",
   "lastOpenFiles": [
+    "Iflytek/技术方案/Spring Boot 中多环境异构配置的优雅实现.md",
     "Iflytek/技术方案/Zset做的延迟队列.md",
+    "Iflytek/技术方案/编写yml导致的参数增删如何影响实体类呢？.md",
+    "Iflytek/技术方案/计算批次大小的证明.md",
+    "Java/Spring/@ConfigurationProperties与@Value的区别.md",
+    "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
+    "Iflytek/本周代办.md",
+    "Iflytek/技术方案/Result 包装响应体.md",
+    "Iflytek/技术方案/Java通过WebSocket 与AI进行通信.md",
+    "Iflytek/技术方案/为什么await()会阻塞当前线程，在响应式环境中会导致线程匮乏？.md",
+    "Iflytek/技术方案/竞态条件与 TTL 过期.md",
+    "Iflytek/工作计划.md",
+    "img_v3_02oh_f09b3b8c-0b04-49e8-860c-40f029fa48nh.jpg",
+    "Iflytek/检查bug提示词：.md",
+    "Iflytek/技术方案/动态sql拼接null 导致的错误.md",
     "Java/算法/接雨水.md",
     "Java/算法",
     "Iflytek/技术方案/再有人问你如何实现订单到期关闭，就把这篇文章发给他！.md",
@@ -200,23 +214,10 @@
     "Java/数据库/ShardingShpere分表注意事项.md",
     "Java/数据库",
     "Java/微服务（Feign、Sentinel、Nacos 等）/限流的方法与实现.md",
-    "Java/微服务（Feign、Sentinel、Nacos 等）/如何解决feigin在获取数据时候出现的范型擦除？.md",
-    "Java/微服务（Feign、Sentinel、Nacos 等）/feign - Stream 下重定向问题.md",
     "Java/微服务（Feign、Sentinel、Nacos 等）",
-    "Java/并发编程/多线程下 上下文信息丢失问题.md",
     "Java/并发编程",
-    "Java/Spring/log 配置文件.md",
-    "Java/Spring/@PostConstruct.md",
-    "Java/Spring/@JsonAnySetter-json反序列化的兜底机制.md",
     "Java/Spring",
-    "Java/Redis/Redis下的生产者消费者模式.md",
-    "Java/Redis/Redis Stream 消息不会自动过期 消费失败怎么办？.md",
     "Java/Redis",
-    "Java/K8s/常用命令K8s.md",
-    "Java/AI/Rag.md",
-    "Iflytek/检查bug提示词：.md",
-    "Iflytek/技术方案/雪花算法导致的前端精度丢失问题.md",
-    "Iflytek/技术方案/重写Ai模块代码到新标注工具系统.md",
     "tutorial-extras/img/localeDropdown.png",
     "tutorial-extras/img/docsVersionDropdown.png",
     "img_v3_02o8_f7adc37d-3ae9-43b3-8a70-1e56ec87d7nh.jpg",

@@ -13,30 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "源码/Redission 下的雪花算法.md",
+                "file": "Iflytek/本周代办.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Redission 下的雪花算法"
-            }
-          },
-          {
-            "id": "45edce8579d61d36",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "docs/Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
-                "bFile": "docs/Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: Ai大模型调用时候Redission实现的令牌桶限流"
+              "title": "本周代办"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -109,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Iflytek/本周代办.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "本周代办 的反向链接列表"
             }
           },
           {
@@ -156,12 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Iflytek/本周代办.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "本周代办 的大纲"
             }
           },
           {
@@ -192,16 +179,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4c5abe1c422759fe",
+  "active": "a8913f64ed36cbb2",
   "lastOpenFiles": [
     "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
+    "源码/Redission 下的雪花算法.md",
     "Iflytek/技术方案/异步资源导入架构设计说明.md",
     "Iflytek/技术方案/多线程下 上下文信息丢失问题.md",
     "Java/并发编程/多线程下 上下文信息丢失问题.md",
     "Java/并发编程/Semaphore 信号量在Java中的作用.md",
     "源码/Redisson的create（config）是在什么时候注入配置的？.md",
     "未命名.md",
-    "源码/Redission 下的雪花算法.md",
     "Iflytek/技术方案/Spring Boot 中多环境异构配置的优雅实现.md",
     "Iflytek/技术方案/竞态条件与 TTL 过期.md",
     "Iflytek/技术方案/雪花算法导致的前端精度丢失问题.md",

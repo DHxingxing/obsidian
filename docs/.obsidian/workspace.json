@@ -25,14 +25,14 @@
             "id": "45edce8579d61d36",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
-                "mode": "source",
-                "source": false
+                "aFile": "docs/Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
+                "bFile": "docs/Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Ai大模型调用时候Redission实现的令牌桶限流"
+              "icon": "diff",
+              "title": "Diff: Ai大模型调用时候Redission实现的令牌桶限流"
             }
           }
         ],
@@ -109,7 +109,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Ai大模型调用时候Redission实现的令牌桶限流 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -157,13 +156,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Ai大模型调用时候Redission实现的令牌桶限流 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -194,13 +192,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "45edce8579d61d36",
+  "active": "4c5abe1c422759fe",
   "lastOpenFiles": [
+    "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
     "Iflytek/技术方案/异步资源导入架构设计说明.md",
     "Iflytek/技术方案/多线程下 上下文信息丢失问题.md",
     "Java/并发编程/多线程下 上下文信息丢失问题.md",
     "Java/并发编程/Semaphore 信号量在Java中的作用.md",
-    "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
     "源码/Redisson的create（config）是在什么时候注入配置的？.md",
     "未命名.md",
     "源码/Redission 下的雪花算法.md",

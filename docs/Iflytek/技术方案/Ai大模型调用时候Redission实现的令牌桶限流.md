@@ -121,10 +121,231 @@ end
     `INCR` 命令也是原子的，它会安全地将键的值加一。所以，释放操作同样不会有并发问题。
 
 
+## 上面是Redisson 进行令牌桶的操作的部分，现在我要记录Flux的使用。
+
+代码的核心是 `Flux.using()`，你可以把它理解成是 Java 传统 `try-with-resources` 语句的**响应式、异步版本**。它的设计哲学是“**借资源 -> 用资源 -> 还资源**”，并确保“还资源”这一步**无论如何都会被执行**，从而防止资源泄漏。
+
+#### 1、借资源
+```java
+ () -> {
+    boolean acquired = checkRateLimit(modelKey, aiModelStragety);
+    if (!acquired) {
+        throw new BusinessException(REQUEST_TIMEOUT);
+    }
+    log.debug("限流令牌已获取...");
+    return modelKey;
+}
+```
+- **作用**：这是整个流程的入口。当有订阅者（subscriber）订阅这个 `Flux` 时，这个函数会被**首先调用**。
+    
+- **具体行为**：
+    
+    - 它调用 `checkRateLimit()` 去 Redisson 申请一个信号量许可（令牌）。
+        
+    - **申请成功**：如果 `acquired` 为 `true`，它会记录一条日志，并返回 `modelKey` 作为“已成功获取的资源”的凭证。这个凭证会被传递给后续的两个函数。
+        
+    - **申请失败**：如果 `acquired` 为 `false`（被限流了），它会立即抛出一个 `BusinessException` 异常。这个异常会使整个 `Flux` 流直接进入 `error` 状态，后续的“用资源”（`callModel`）和“还资源”逻辑都不会执行，流程提前终止。
+
+#### 2、用资源
+```java
+acquiredResource -> aiModelStragety.callModel(aiMessageDTO, fullPrompt)
+```
+- **作用**：只有在“借资源”成功后，这个函数才会被调用。它负责创建真正的业务数据流。
+- **具体行为**：
+    
+    - 它接收上一步返回的资源凭证（令牌） `acquiredResource`（在这里就是`modelKey`）。
+        
+    - 然后调用 `aiModelStragety.callModel()`，这个方法会返回一个 `Flux<String>`，也就是从 AI 模型那里流式返回的数据。这部分是整个业务逻辑的核心。
+
+#### 还资源
+
+```java
+releasedResource -> {  
+    String limiterKey = String.format(AI_MODEL_LIMITER_KEY_SUFFIX, releasedResource);  
+    RSemaphore semaphore = redissonClient.getSemaphore(limiterKey);  
+    if (semaphore.isExists()) {  
+        semaphore.release(1);  
+        log.debug("限流器已释放: key={}", limiterKey);  
+    } else {  
+        log.warn("限流器不存在，无法释放: key={}", limiterKey);
+        
+```
+
+- **作用**：这是 `Flux.using` 最重要的保障机制。这个函数会在第二步创建的流**终止时被调用**。
+    
+- **触发时机**：无论流是正常结束、发生错误还是被取消，它**必定会执行**。
+    
+    - **正常完成 (`onComplete`)**：AI 模型成功返回了所有数据。
+        
+    - **发生错误 (`onError`)**：在调用 `callModel` 的过程中发生了任何异常。
+        
+    - **被取消 (`onCancel`)**：下游的调用者取消了数据订阅。
+        
+- **具体行为**：它接收到凭证，然后调用 `semaphore.release(1)`，将之前申请的那个许可**归还**给 Redisson 的信号量池。这就确保了限流的许可能够被可靠地回收，不会发生“只借不还”的资源泄漏问题。
+
+#### .doOnError
+```java
+doOnError(throwable -> {  
+    // 只有当 callModel 内部发生错误时才会记录，限流错误在 using 内部处理  
+    if (!(throwable instanceof BusinessException && ((BusinessException) throwable).getErrorCode().equals(REQUEST_TIMEOUT))) {  
+        log.error("AI模型调用失败: modelKey={}, error={}", modelKey, throwable.getMessage());  
+    }  
+});
+```
+
+这是一个“副作用”操作符，它允许你在不改变流的情况下，对流中的错误信号进行一些处理。
+
+- **作用**：它在这里的作用是记录日志。
+    
+- **精妙之处**：它加了一个判断 `if (!(throwable instanceof BusinessException && ...))`，意思是**只记录那些不是因为限流（REQUEST_TIMEOUT）而发生的未知错误**。因为限流是一个预期的、正常的业务逻辑，已经在第一步中记录过了，没必要再当作一个意外错误来重复记录，这样可以保持日志的整洁和有效性。
+
+## 为什么必须用 `Flux.using`？
+
+AI模型调用是**异步流式**的，即 `callModel(...)` 方法返回的是 `Flux<String>`。这是一个关键点。
+
+`Flux` 代表的是一个“未来的数据序列”，调用 `callModel` 方法会**立即返回**，而数据（AI的回答）会在之后的某个时间点，以数据流的形式陆续到达。
+
+- **如果不用 `Flux.using`**（比如尝试手动管理许可）：
+    
+    - 你会遇到一个棘手的问题：**应该在什么时候调用 `semaphore.release()` 来释放许可？**
+        
+    - **错误做法1：在 `callModel` 调用后立即释放。**
+        ```java
+        // 绝对错误！
+        semaphore.acquire();
+        Flux<String> resultStream = aiModelStragety.callModel(...);
+        semaphore.release(); // 大BUG！此时AI调用刚开始，许可就被释放了！
+        return resultStream;
+        ```
+这会导致许可被瞬间释放，下一个请求马上就能获得许可，并发控制形同虚设。
+
+    - **错误做法2：尝试使用回调。**
+```java
+semaphore.acquire();
+return aiModelStragety.callModel(...)
+        .doOnTerminate(() -> { // 当流终止时（完成或错误）
+            semaphore.release();
+        })
+        .doOnCancel(() -> { // 当流被取消时
+            semaphore.release();
+        });
+
+```
+
+        这种方式虽然可行，但非常笨拙。你需要手动处理所有可能的终止情况（`onComplete`, `onError`, `onCancel`），代码可读性差，容易遗漏，这就是所谓的“回调地狱”，不是一种健壮的设计。
+        
+- **`Flux.using` 的作用**：
+    - 它就是为了解决这个**“异步资源生命周期管理”**问题而生的。
+    - 它将**“获取资源”**（`acquire`）、**“使用资源创建流”**（`callModel`）、**“释放资源”**（`release`）这三个步骤优雅地绑定在了一起。
+    - 它向你保证：**无论中间的异步流是正常完成、发生错误、还是被中途取消，那个“释放资源”的逻辑都一定会被执行。**
+
+**所以，`Flux.using` 回答了这个问题：对于一个异步数据流，我如何能100%确保我之前获取的资源，在流程结束后一定被释放？**
+
 
 ## 补充知识：
 
- Semaphore 信号量在Java中的作用:
+
+#### Flux 的底层是什么？
+
+`Flux` 是 Project Reactor 库中的核心类之一，而 Project Reactor 是实现**响应式编程规范（Reactive Streams Specification）** 的一个主流框架。
+
+Flux 的底层核心思想可以概括为以下几点：
+
+##### 1、响应式编程是基于经典的**发布者-订阅者**设计模式的。
+
+- **`Flux` (或 `Mono`) 是发布者 (Publisher)**：它代表一个包含 0 到 N 个元素的**异步数据序列**。你可以把它想象成一个“数据管道”，它只用来传输经过他的数据（这些数据可以来自数据库，定时任务的生产，取决于你怎么生产这些数据），本身不产生数据。
+- 
+**我们的代码中是发布者呢**？
+
+**发布者**就是你通过 `Flux.using(...)`精心构建并从 `invokeAiModel` 方法**返回**的那个 `Flux<String>` 对象。
+
+它不仅仅是一个简单的数据源，而是一个**复合的、智能的数据管道**。这个管道的蓝图（定义）包含了：
+
+1. **前置操作逻辑**：在数据开始流动前，必须先从 Redisson 获取一个限流许可。
+    
+2. **核心数据源**：真正的数据来自于 `aiModelStragety.callModel(...)` 返回的另一个 `Flux`。
+    
+3. **后置清理逻辑**：无论数据流是正常结束、出错还是被取消，都必须归还 Redisson 的许可。
+    
+
+所以，这个由 `Flux.using(...)` 创造的 `Flux<String>` 就是一个功能完备的**发布者**。它已经准备好，一旦有人订阅，它就知道该如何一步步地执行上述所有操作。
+
+---
+    
+- **调用 `.subscribe(...)` 的是你写的逻辑，它代表你定义的订阅者（Subscriber）角色，负责对数据流进行消费。**在响应式编程模型中，`subscribe()` 是触发整个数据流的关键操作。只有在订阅发生时，Flux 或 Mono 才会开始执行你预先定义的数据生成、转换与传递逻辑（即“惰性求值”特性）。这个订阅者可以是你自己实现的回调函数，也可以是框架中预定义的消费者，例如用于响应式 Web 请求、数据库响应等场景。
+    
+- **“没有订阅，就没有事件”**：这是响应式编程的黄金法则。你定义了一长串的 `Flux` 操作（如 `map`, `filter`, `using`），但只要没有最终的 `.subscribe()` 调用，整个数据流就不会启动。
+
+ **谁是订阅者** (Subscriber)？
+
+可能会疑惑，在`invokeAiModel` 方法里，并没有看到任何 `.subscribe()` 的调用。这是因为在现代响应式框架（比如正在使用的 **Spring WebFlux**）中，最终的订阅操作通常是由**框架本身**来完成的。
+
+我把调用的接口放在这里：
+
+```java
+@GetMapping(value = "invoke", produces = MediaType.TEXT_PLAIN_VALUE)  
+public ResponseEntity<Flux<String>> invokeAiModel(@RequestParam Long jobId, @RequestParam String prompt) {  
+    Flux<String> result = aiModelService.invokeAiModel(jobId, prompt);  
+    return ResponseEntity.ok()  
+            .contentType(MediaType.TEXT_PLAIN)  
+            .body(result);  
+}
+```
+
+**订阅的“魔法”就发生在这里：**
+
+1. 一个外部客户端（比如网页）向 `/ai/stream-invoke` 发起了一个 HTTP 请求。
+    
+2. Spring WebFlux 框架接收到请求，并调用你的 `streamInvoke` 控制器方法。
+    
+3. 你的方法返回了一个 `Flux<String>` 对象（那个**发布者**）。
+    
+4. **关键时刻**：Spring WebFlux 框架接管了这个返回的 `Flux`。它看到返回值是一个响应式类型，于是**框架自己扮演了订阅者的角色，并在内部对你的 `Flux` 调用了 `.subscribe()`**。
+    
+
+这个由 **Spring WebFlux 框架**创建的**订阅者**，它的任务是专门**处理 HTTP 响应**。它的逻辑大致如下：
+
+- 当接收到 `onNext(String data)` 信号时（即AI模型传来一小块数据）：它会将这块数据写入到 HTTP 的响应体中，实时地发送给客户端。这就是流式响应（Server-Sent Events）的实现方式。
+    
+- 当接收到 `onError(Throwable error)` 信号时（比如你的限流异常或者模型调用失败）：它会将这个异常转换成一个合适的 HTTP 错误状态码（比如 429 Too Many Requests 或 500 Internal Server Error）并返回给客户端。
+    
+- 当接收到 `onComplete()` 信号时（AI数据流正常结束）：它会正常地关闭 HTTP 响应连接。
+---
+
+##### 2 基于“推”的异步模型 (Push-based Asynchronous Model)
+
+- **传统模型（Pull 拉模式）**：像 `Iterator` 或 `List`，是消费者主动去拉取数据 (`iterator.next()`)，如果数据还没准备好，线程就会**阻塞**等待。
+    
+- **响应式模型（Push 推模式）**：是生产者（Publisher）在数据准备好后，**主动推送**给消费者（Subscriber）。整个过程是**异步非阻塞**的，线程不需要空闲等待，可以去处理其他任务，大大提高了系统资源的利用率。
+
+##### 3. 事件信号 (Event Signals)
+
+`Flux` 数据流中传递的不仅仅是数据，而是一系列**标准化的事件信号**：
+
+- `onNext(T data)`: 推送一个正常的数据项。
+    
+- `onComplete()`: 通知订阅者数据流已成功结束，不会再有 `onNext` 事件。
+    
+- `onError(Throwable error)`: 通知订阅者流中发生了错误，数据流异常终止。
+    
+
+`Flux.using` 的三个函数，本质上就是在响应这三种信号（`onNext` 由 `callModel` 的 `Flux` 产生，`onComplete`/`onError` 会触发资源清理）。
+
+##### 4. 背压 (Backpressure)
+
+这是响应式流最关键、最复杂的概念之一。它解决了“快生产者 vs 慢消费者”的问题。
+
+- **问题**：如果数据生产者（如一个快速的数据库）推送数据的速度远远快于消费者处理的速度，会导致消费者内存溢出而崩溃。
+    
+- **解决方案**：订阅者在订阅时，会通过一个 `Subscription` 对象告诉发布者：“我准备好了，请先给我 N 个元素”（`subscription.request(N)`）。发布者只会推送 N 个元素，然后等待订阅者下一次的 `request` 请求。这给予了消费者反向控制流量的能力，防止自己被冲垮。
+
+
+
+
+
+
+
+#### **Semaphore 信号量在Java中的作用:**
  
  在Java中，`Semaphore`（信号量）是 `java.util.concurrent` 并发包提供的一个非常重要的工具类。它的核心作用是**控制对特定资源或代码块的同时访问的线程数量**。
 ##### 主要方法和特性总结

@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Spring/@ConfigurationProperties与@Value的区别.md",
+                "file": "源码/Redission 下的雪花算法.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "@ConfigurationProperties与@Value的区别"
+              "title": "Redission 下的雪花算法"
+            }
+          },
+          {
+            "id": "45edce8579d61d36",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Ai大模型调用时候Redission实现的令牌桶限流"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Java/Spring/@ConfigurationProperties与@Value的区别.md",
+                "file": "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "@ConfigurationProperties与@Value的区别 的反向链接列表"
+              "title": "Ai大模型调用时候Redission实现的令牌桶限流 的反向链接列表"
             }
           },
           {
@@ -142,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Java/Spring/@ConfigurationProperties与@Value的区别.md",
+                "file": "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "@ConfigurationProperties与@Value的区别 的大纲"
+              "title": "Ai大模型调用时候Redission实现的令牌桶限流 的大纲"
             }
           },
           {
@@ -179,41 +194,45 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0e7d2ff7a7d6f051",
+  "active": "45edce8579d61d36",
   "lastOpenFiles": [
-    "Iflytek/技术方案/Spring Boot 中多环境异构配置的优雅实现.md",
-    "Iflytek/技术方案/Zset做的延迟队列.md",
-    "Iflytek/技术方案/编写yml导致的参数增删如何影响实体类呢？.md",
-    "Iflytek/技术方案/计算批次大小的证明.md",
-    "Java/Spring/@ConfigurationProperties与@Value的区别.md",
+    "Iflytek/技术方案/异步资源导入架构设计说明.md",
+    "Iflytek/技术方案/多线程下 上下文信息丢失问题.md",
+    "Java/并发编程/多线程下 上下文信息丢失问题.md",
+    "Java/并发编程/Semaphore 信号量在Java中的作用.md",
     "Iflytek/技术方案/Ai大模型调用时候Redission实现的令牌桶限流.md",
-    "Iflytek/本周代办.md",
+    "源码/Redisson的create（config）是在什么时候注入配置的？.md",
+    "未命名.md",
+    "源码/Redission 下的雪花算法.md",
+    "Iflytek/技术方案/Spring Boot 中多环境异构配置的优雅实现.md",
+    "Iflytek/技术方案/竞态条件与 TTL 过期.md",
+    "Iflytek/技术方案/雪花算法导致的前端精度丢失问题.md",
+    "Iflytek/技术方案/再有人问你如何实现订单到期关闭，就把这篇文章发给他！.md",
+    "Iflytek/技术方案/动态sql拼接null 导致的错误.md",
     "Iflytek/技术方案/Result 包装响应体.md",
     "Iflytek/技术方案/Java通过WebSocket 与AI进行通信.md",
     "Iflytek/技术方案/为什么await()会阻塞当前线程，在响应式环境中会导致线程匮乏？.md",
-    "Iflytek/技术方案/竞态条件与 TTL 过期.md",
+    "Iflytek/本周代办.md",
+    "img_v3_02oh_4efb5fd8-33d9-4988-9546-ec1ae98219nh 1.jpg",
+    "img_v3_02oh_4efb5fd8-33d9-4988-9546-ec1ae98219nh.jpg",
+    "img_v3_02oh_9e0e799c-772f-4d14-b121-1eac5b7463nh.jpg",
+    "img_v3_02oh_c7f69571-276e-4585-9d1a-0977c64de2nh.jpg",
+    "Java/Spring/@ConfigurationProperties与@Value的区别.md",
+    "Iflytek/技术方案/Zset做的延迟队列.md",
+    "Iflytek/技术方案/编写yml导致的参数增删如何影响实体类呢？.md",
+    "Iflytek/技术方案/计算批次大小的证明.md",
     "Iflytek/工作计划.md",
     "img_v3_02oh_f09b3b8c-0b04-49e8-860c-40f029fa48nh.jpg",
     "Iflytek/检查bug提示词：.md",
-    "Iflytek/技术方案/动态sql拼接null 导致的错误.md",
     "Java/算法/接雨水.md",
     "Java/算法",
-    "Iflytek/技术方案/再有人问你如何实现订单到期关闭，就把这篇文章发给他！.md",
     "源码/hutool工具下雪花算法. todo.md",
     "源码/Spring Feign 的源码.md",
-    "源码/Redission 下的雪花算法.md",
     "源码",
-    "daily/2025-07-01.md",
-    "daily/2025-06-30.md",
     "daily",
-    "Java/设计模式/监听者模式.md",
-    "Java/设计模式/ddd下如何解决循环依赖的问题.md",
     "Java/设计模式",
-    "Java/测试/什么是自动化测试框架Mock.md",
     "Java/测试",
-    "Java/数据库/ShardingShpere分表注意事项.md",
     "Java/数据库",
-    "Java/微服务（Feign、Sentinel、Nacos 等）/限流的方法与实现.md",
     "Java/微服务（Feign、Sentinel、Nacos 等）",
     "Java/并发编程",
     "Java/Spring",

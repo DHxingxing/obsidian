@@ -39,9 +39,9 @@
 
 `callModel` 方法是整个逻辑的入口。我们一步一步来看它做了什么。
 
-Java
 
-```
+
+```java
 public Flux<String> callModel(AiMessageDTO aiMessageDTO, String content) {
     // ...
     return Flux.<String>create(sink -> {
@@ -63,9 +63,7 @@ public Flux<String> callModel(AiMessageDTO aiMessageDTO, String content) {
 
 **第1步：准备连接信息**
 
-Java
-
-```
+```java
 // 获取WebSocket连接信息
 Pair<String, Map<String, String>> headerPair = ModelTools.getModelSocketConnectInfo(
         sparkDeskParams.getType(), sparkDeskParams.getEndPoint(),
@@ -76,9 +74,8 @@ Pair<String, Map<String, String>> headerPair = ModelTools.getModelSocketConnectI
 
 **第2步：创建WebSocket客户端**
 
-Java
 
-```
+```Java
 client = new WebSocketClient(new URI(headerPair.getKey()), new Draft_6455(), headerPair.getRight(), CONNECTION_TIMEOUT_MS) {
     // 匿名内部类，重写关键事件方法
     // ... onOpen, onMessage, onClose, onError ...
@@ -100,21 +97,19 @@ client = new WebSocketClient(new URI(headerPair.getKey()), new Draft_6455(), hea
 
 - **`onOpen(ServerHandshake handshake)`**: 当WebSocket连接**成功建立**时被调用。
     
-    Java
-    
-    ```
-    log.info("WebSocket连接已建立: {}", sid);
+    ```java
+  log.info("WebSocket连接已建立: {}", sid);
     connectionLatch.countDown(); // 通知主线程：连接成功了！
     startHeartbeat(this); // 启动一个心跳线程，防止连接因超时而断开
-    ```
+  ```
+    
     
     这里的 `CountDownLatch` 是一个同步工具，我们稍后会讲它的作用。
     
 - **`onMessage(String message)`**: 当从服务器**收到一条消息**时被调用。这是处理AI返回数据的核心。
     
-    Java
     
-    ```
+```java
     // 1. 解析收到的JSON字符串
     JSONObject jsonObject = JSONObject.parseObject(message);
     
@@ -136,18 +131,17 @@ client = new WebSocketClient(new URI(headerPair.getKey()), new Draft_6455(), hea
     
 - **`onClose(int code, String reason, boolean remote)`**: 当连接**关闭**时被调用。
     
-    Java
     
-    ```
+    
+    ```Java
     log.info("WebSocket连接关闭: ...", ...);
     sink.complete(); // 连接都关了，数据流自然也结束了
     ```
     
 - **`onError(Exception ex)`**: 当发生**网络或协议错误**时被调用。
     
-    Java
     
-    ```
+    ```Java
     log.error("WebSocket连接错误: ...", ...);
     sink.error(new RuntimeException(...)); // 向Flux流报告错误
     ```
@@ -155,9 +149,8 @@ client = new WebSocketClient(new URI(headerPair.getKey()), new Draft_6455(), hea
 
 **第3步：发起连接并等待**
 
-Java
 
-```
+```Java
 client.connect();
 if (!connectionLatch.await(CONNECTION_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
     throw new RuntimeException("WebSocket连接超时");
@@ -179,9 +172,8 @@ if (!connectionLatch.await(CONNECTION_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
 
 **第4步：发送请求**
 
-Java
 
-```
+```Java
 // 等待连接成功后...
 JSONObject requestPayload = buildRequestPayload(content, sid, sparkDeskParams);
 client.send(requestPayload.toJSONString());
@@ -191,9 +183,8 @@ client.send(requestPayload.toJSONString());
 
 **第5步：资源清理**
 
-Java
 
-```
+```Java
 sink.onCancel(() -> {
     if (finalClient != null && finalClient.isOpen()) {
         finalClient.close();

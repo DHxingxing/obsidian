@@ -1,0 +1,476 @@
+Message-ID: <1891529584.11.1753942739940.JavaMail.root@zxpt-wiki-app.novalocal>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_10_2106126206.1753942739938"
+
+------=_Part_10_2106126206.1753942739938
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>=E5=BF=AB=E9=80=9F=E5=B0=86 SpringBoot =E5=BA=94=E7=94=A8=E6=8E=
+=A5=E5=85=A5 Prometheus =E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>=E5=BF=AB=E9=80=9F=E5=B0=86 SpringBoot =E5=BA=94=E7=94=A8=E6=8E=A5=
+=E5=85=A5 Prometheus =E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB</h1>
+    <div class=3D"Section1">
+        <p>SpringBoot =E5=86=85=E7=BD=AE=E4=BA=86 actuator =E6=9D=A5=E5=AE=
+=9E=E7=8E=B0=E4=BA=86=E6=9C=8D=E5=8A=A1=E7=8A=B6=E6=80=81=E4=BF=A1=E6=81=AF=
+=E7=9A=84=E8=8E=B7=E5=8F=96=EF=BC=8C=E9=81=BF=E5=85=8D=E4=BA=86=E8=87=AA=E5=
+=B7=B1=E5=BC=80=E5=8F=91=E6=8E=A5=E5=8F=A3</p>
+<p>=E4=BD=86=E6=98=AF actuator =E6=8F=90=E4=BE=9B=E7=9A=84=E6=8E=A5=E5=8F=
+=A3=E8=BF=94=E5=9B=9E=E4=BF=A1=E6=81=AF=E4=B8=8D=E8=83=BD=E8=A2=AB promethe=
+us =E7=B3=BB=E7=BB=9F=E6=89=80=E8=AF=86=E5=88=AB=EF=BC=9B=E6=89=80=E4=BB=A5=
+=E9=9C=80=E8=A6=81=E5=B0=86 actuator =E6=8E=A5=E5=8F=A3=E8=BF=94=E5=9B=9E=
+=E7=9A=84=E4=BF=A1=E6=81=AF=E8=BD=AC=E6=88=90 prometheus =E7=B3=BB=E7=BB=9F=
+=E6=89=80=E8=83=BD=E8=AF=86=E5=88=AB=E7=9A=84=E7=BB=93=E6=9E=84</p>
+<h1 id=3D"id-=E5=BF=AB=E9=80=9F=E5=B0=86SpringBoot=E5=BA=94=E7=94=A8=E6=8E=
+=A5=E5=85=A5Prometheus=E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB-=E6=8E=A5=E5=85=
+=A5=E6=B5=81=E7=A8=8B">=E6=8E=A5=E5=85=A5=E6=B5=81=E7=A8=8B&nbsp;</h1>
+<h2 id=3D"id-=E5=BF=AB=E9=80=9F=E5=B0=86SpringBoot=E5=BA=94=E7=94=A8=E6=8E=
+=A5=E5=85=A5Prometheus=E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB-maven=E5=A2=9E=
+=E5=8A=A0=E4=BE=9D=E8=B5=96">maven =E5=A2=9E=E5=8A=A0=E4=BE=9D=E8=B5=96</h2=
+>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: RDark" data-theme=3D"RDark">&lt;dependency&gt=
+;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;!-- Micrometer Prometheus Registry --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.micrometer&lt;/groupId&gt;
+    &lt;artifactId&gt;micrometer-registry-prometheus&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>=20
+</div>
+</div>
+<ul>
+<li>=E7=AC=AC=E4=B8=80=E4=B8=AA=E4=BE=9D=E8=B5=96=E6=98=AF=E6=8F=90=E4=BE=
+=9B springboot =E6=9C=8D=E5=8A=A1=E7=8A=B6=E6=80=81=E7=9B=91=E6=8E=A7=E6=8E=
+=A5=E5=8F=A3</li>
+<li>=E7=AC=AC=E4=BA=8C=E4=B8=AA=E4=BE=9D=E8=B5=96=E6=98=AF=E5=B0=86 springb=
+oot =E7=9A=84=E6=8E=A5=E5=8F=A3=E8=BF=94=E5=9B=9E=E8=BD=AC=E6=88=90 prometh=
+eus =E7=B3=BB=E7=BB=9F=E6=89=80=E8=83=BD=E8=AF=86=E5=88=AB=E7=9A=84=E6=A0=
+=BC=E5=BC=8F</li>
+<li>=E7=AC=AC=E4=B8=89=E4=B8=AA=E4=BE=9D=E8=B5=96=E6=98=AF=E5=B0=86 actuato=
+r =E6=8E=A5=E5=8F=A3=E5=81=9A=E4=B8=80=E4=B8=AA=E7=AE=80=E5=8D=95=E7=9A=84=
+=E9=89=B4=E6=9D=83=EF=BC=8C=E9=81=BF=E5=85=8D=E6=8E=A5=E5=8F=A3=E8=83=BD=E7=
+=9B=B4=E6=8E=A5=E8=A2=AB=E5=A4=96=E9=83=A8=E8=AE=BF=E9=97=AE</li>
+</ul>
+<h2 id=3D"id-=E5=BF=AB=E9=80=9F=E5=B0=86SpringBoot=E5=BA=94=E7=94=A8=E6=8E=
+=A5=E5=85=A5Prometheus=E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB-=E9=85=8D=E7=BD=
+=AE=E6=96=87=E4=BB=B6=E4=BF=AE=E6=94=B9">=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=
+=B6=E4=BF=AE=E6=94=B9</h2>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: RDark" data-theme=3D"RDark">spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    ## =E8=87=AA=E5=AE=9A=E4=B9=89=E6=A0=87=E7=AD=BE=EF=BC=8C spring-boot =
+=E7=89=88=E6=9C=AC=E4=BD=8E=E4=BA=8E2.1.0.RELEASE =E6=97=A0=E8=AF=A5=E9=A1=
+=B9=E9=85=8D=E7=BD=AE=EF=BC=8C=E5=8F=AA=E8=83=BD=E9=80=9A=E8=BF=87=E4=BB=A3=
+=E7=A0=81=E8=AE=BE=E7=BD=AE=E6=A0=87=E7=AD=BE=EF=BC=8C =E4=BD=86=E5=BB=BA=
+=E8=AE=AE=E8=BF=9B=E8=A1=8C=E8=AE=BE=E7=BD=AE=EF=BC=8C=E4=BB=A3=E7=A0=81=E5=
+=A4=84=E7=8E=B0=E5=B7=B2=E5=8D=95=E7=8B=AC=E5=AE=9E=E7=8E=B0=E5=85=B6=E4=B8=
+=AD=E7=9A=84application =E7=9A=84=E5=8F=96=E5=80=BC
+    tags:
+      application: datamgr-svc
+# =20
+#  server:
+#    port: 9001</pre>=20
+</div>
+</div>
+<h2 id=3D"id-=E5=BF=AB=E9=80=9F=E5=B0=86SpringBoot=E5=BA=94=E7=94=A8=E6=8E=
+=A5=E5=85=A5Prometheus=E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB-prometheus=E9=85=
+=8D=E7=BD=AE=EF=BC=8C=E8=AF=A5=E6=96=B9=E6=B3=95=E5=BD=93spring-boot=E7=89=
+=88=E6=9C=AC>=3D2.1.0.RELEASE=E6=97=B6=EF=BC=8C=E6=97=A0=E9=9C=80=E5=88=9B=
+=E5=BB=BA=E8=AF=A5=E7=B1=BB=EF=BC=8C=E5=8F=AF=E7=9B=B4=E6=8E=A5=E9=80=9A=E8=
+=BF=87=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=B6=E8=BF=9B=E8=A1=8C=E9=85=8D=E7=BD=
+=AE">prometheus =E9=85=8D=E7=BD=AE=EF=BC=8C =E8=AF=A5=E6=96=B9=E6=B3=95=E5=
+=BD=93spring-boot =E7=89=88=E6=9C=AC&gt;=3D 2.1.0.RELEASE =E6=97=B6=EF=BC=
+=8C=E6=97=A0=E9=9C=80=E5=88=9B=E5=BB=BA=E8=AF=A5=E7=B1=BB=EF=BC=8C=E5=8F=AF=
+=E7=9B=B4=E6=8E=A5=E9=80=9A=E8=BF=87=E9=85=8D=E7=BD=AE=E6=96=87=E4=BB=B6=E8=
+=BF=9B=E8=A1=8C=E9=85=8D=E7=BD=AE</h2>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: RDark" data-theme=3D"RDark">package com.iflyt=
+ek.obu.dataz.config;
+
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistry=
+Customizer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * MetricConfig
+ *
+ * @author wangqi
+ * @date 2018/11/08
+ */
+@Configuration
+public class MetricConfig {
+
+    @Value("${management.metrics.tags.application:${spring.application.name=
+:}}")
+    private String applicationName;
+
+    @Bean
+    MeterRegistryCustomizer&lt;MeterRegistry&gt; metricsCommonTags() {
+        return registry -&gt; registry.config().commonTags("application", a=
+pplicationName);
+    }
+}
+
+
+</pre>=20
+</div>
+</div>
+<p><br></p>
+<h2 id=3D"id-=E5=BF=AB=E9=80=9F=E5=B0=86SpringBoot=E5=BA=94=E7=94=A8=E6=8E=
+=A5=E5=85=A5Prometheus=E7=9B=91=E6=8E=A7=E4=BD=93=E7=B3=BB-actuator=E9=89=
+=B4=E6=9D=83">actuator =E9=89=B4=E6=9D=83</h2>
+<p>=E7=9C=8B=E4=B8=8B=E8=87=AA=E5=B7=B1=E4=BE=9D=E8=B5=96=E7=9A=84&nbsp;spr=
+ing-boot-starter-security =E7=89=88=E6=9C=AC=EF=BC=8C=E8=8B=A5=E4=BD=8E=E4=
+=BA=8E 5.7=EF=BC=8C =E4=BD=BF=E7=94=A8=E4=B8=8B=E9=9D=A2=E7=9A=84=E6=96=B9=
+=E5=BC=8F</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: RDark" data-theme=3D"RDark">package com.iflyt=
+ek.lingxi.daap.conf.security;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecu=
+rity;
+import org.springframework.security.config.annotation.web.configuration.Ena=
+bleWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.Web=
+SecurityConfigurerAdapter;
+
+/**
+ * actuator =E9=89=B4=E6=9D=83
+ *
+ * @author fangzhuo
+ * @version 1.0.0
+ * @since 2025/01/08 17:44
+ */
+@EnableWebSecurity
+@Configuration
+public class ActuatorSecurityConfig extends WebSecurityConfigurerAdapter {
+
+=09@Bean
+=09public HttpFirewall httpFirewall() {
+    =09return new DefaultHttpFirewall();
+=09}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+=09=09http.csrf().and()
+        =09.setSharedObject(HttpFirewall.class, httpFirewall());
+        http.requestMatchers()
+                .antMatchers("/actuator/**")
+                .and()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+    }
+}</pre>=20
+</div>
+</div>
+<p>=E9=AB=98=E4=BA=8E 5.7 =E7=89=88=E6=9C=AC</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">=20
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: RDark" data-theme=3D"RDark">package com.iflyt=
+ek.obu.dataz.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecu=
+rity;
+import org.springframework.security.config.annotation.web.configuration.Ena=
+bleWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+/**
+ * @author fangzhuo
+ * @version 1.0.0
+ * @since 2025/01/08 18:08
+ */
+@Configuration
+@EnableWebSecurity
+public class ActuatorSecurityConfig {
+
+
+=09@Bean
+=09public HttpFirewall httpFirewall() {
+    =09return new DefaultHttpFirewall();
+=09}
+
+    @Bean
+    public SecurityFilterChain securityManager(HttpSecurity httpSecurity) t=
+hrows Exception {
+=09=09httpSecurity.csrf().and()
+        =09.setSharedObject(HttpFirewall.class, httpFirewall());
+        httpSecurity.requestMatchers()
+                .antMatchers("/actuator/**")
+                .and()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+        return httpSecurity.build();
+    }
+}
+
+
+</pre>=20
+</div>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_10_2106126206.1753942739938--
